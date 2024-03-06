@@ -4,6 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '6.+'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'maven-publish'
 }
 
 group = mod_group_id
@@ -163,10 +164,6 @@ dependencies {
         jarJar.ranged(it, "[${try_version},)")
     }
 
-    lib(jarJar("committee.nova:ternary:${ternary_version}")) {
-        jarJar.ranged(it, "[${ternary_version},)")
-    }
-
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     annotationProcessor "systems.manifold:manifold-ext:${manifold_ext_rt_version}"
 }
@@ -227,4 +224,25 @@ sourceSets.each {
     def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "${mod_id}-${minecraft_version}"
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        maven {
+            name = "release"
+            url = 'https://maven.nova-committee.cn/releases'
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
 }
