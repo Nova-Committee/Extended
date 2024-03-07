@@ -8,7 +8,11 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
+@SuppressWarnings("unused")
 @Extension
 public class CompoundTagExtension {
     @Extension
@@ -37,22 +41,22 @@ public class CompoundTagExtension {
     }
 
     @Extension
-    public static Optional<Integer> getOptionalInt(@This CompoundTag $this, String name) {
+    public static OptionalInt getOptionalInt(@This CompoundTag $this, String name) {
         return extended($this).extended$getOptionalInt(name);
     }
 
     @Extension
-    public static Optional<Integer> getStrictInt(@This CompoundTag $this, String name) {
+    public static OptionalInt getStrictInt(@This CompoundTag $this, String name) {
         return extended($this).extended$getStrictInt(name);
     }
 
     @Extension
-    public static Optional<Long> getOptionalLong(@This CompoundTag $this, String name) {
+    public static OptionalLong getOptionalLong(@This CompoundTag $this, String name) {
         return extended($this).extended$getOptionalLong(name);
     }
 
     @Extension
-    public static Optional<Long> getStrictLong(@This CompoundTag $this, String name) {
+    public static OptionalLong getStrictLong(@This CompoundTag $this, String name) {
         return extended($this).extended$getStrictLong(name);
     }
 
@@ -67,12 +71,12 @@ public class CompoundTagExtension {
     }
 
     @Extension
-    public static Optional<Double> getOptionalDouble(@This CompoundTag $this, String name) {
+    public static OptionalDouble getOptionalDouble(@This CompoundTag $this, String name) {
         return extended($this).extended$getOptionalDouble(name);
     }
 
     @Extension
-    public static Optional<Double> getStrictDouble(@This CompoundTag $this, String name) {
+    public static OptionalDouble getStrictDouble(@This CompoundTag $this, String name) {
         return extended($this).extended$getStrictDouble(name);
     }
 

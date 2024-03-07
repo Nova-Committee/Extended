@@ -5,6 +5,9 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 public interface ExtendedCompoundTag {
     Optional<Tag> extended$getOptionalTag(String name);
@@ -17,21 +20,21 @@ public interface ExtendedCompoundTag {
 
     Optional<Short> extended$getStrictShort(String name);
 
-    Optional<Integer> extended$getOptionalInt(String name);
+    OptionalInt extended$getOptionalInt(String name);
 
-    Optional<Integer> extended$getStrictInt(String name);
+    OptionalInt extended$getStrictInt(String name);
 
-    Optional<Long> extended$getOptionalLong(String name);
+    OptionalLong extended$getOptionalLong(String name);
 
-    Optional<Long> extended$getStrictLong(String name);
+    OptionalLong extended$getStrictLong(String name);
 
     Optional<Float> extended$getOptionalFloat(String name);
 
     Optional<Float> extended$getStrictFloat(String name);
 
-    Optional<Double> extended$getOptionalDouble(String name);
+    OptionalDouble extended$getOptionalDouble(String name);
 
-    Optional<Double> extended$getStrictDouble(String name);
+    OptionalDouble extended$getStrictDouble(String name);
 
     Optional<String> extended$getOptionalString(String name);
 

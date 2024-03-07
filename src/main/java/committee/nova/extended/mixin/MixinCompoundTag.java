@@ -8,8 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import javax.annotation.Nullable;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Mixin(CompoundTag.class)
 public abstract class MixinCompoundTag implements ExtendedCompoundTag {
@@ -65,31 +64,35 @@ public abstract class MixinCompoundTag implements ExtendedCompoundTag {
     }
 
     @Override
-    public Optional<Integer> extended$getOptionalInt(String name) {
+    public OptionalInt extended$getOptionalInt(String name) {
         return this.contains(name, 99) ?
-                Try.of(() -> ((NumericTag) this.tags.get(name)).getAsInt()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalInt.of(((NumericTag) this.tags.get(name)).getAsInt()))
+                        .getOrElse(OptionalInt.empty()) :
+                OptionalInt.empty();
     }
 
     @Override
-    public Optional<Integer> extended$getStrictInt(String name) {
+    public OptionalInt extended$getStrictInt(String name) {
         return this.contains(name, 3) ?
-                Try.of(() -> ((IntTag) this.tags.get(name)).getAsInt()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalInt.of(((IntTag) this.tags.get(name)).getAsInt()))
+                        .getOrElse(OptionalInt.empty()) :
+                OptionalInt.empty();
     }
 
     @Override
-    public Optional<Long> extended$getOptionalLong(String name) {
+    public OptionalLong extended$getOptionalLong(String name) {
         return this.contains(name, 99) ?
-                Try.of(() -> ((NumericTag) this.tags.get(name)).getAsLong()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalLong.of(((NumericTag) this.tags.get(name)).getAsLong()))
+                        .getOrElse(OptionalLong.empty()) :
+                OptionalLong.empty();
     }
 
     @Override
-    public Optional<Long> extended$getStrictLong(String name) {
+    public OptionalLong extended$getStrictLong(String name) {
         return this.contains(name, 4) ?
-                Try.of(() -> ((LongTag) this.tags.get(name)).getAsLong()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalLong.of(((LongTag) this.tags.get(name)).getAsLong()))
+                        .getOrElse(OptionalLong.empty()) :
+                OptionalLong.empty();
     }
 
     @Override
@@ -107,17 +110,19 @@ public abstract class MixinCompoundTag implements ExtendedCompoundTag {
     }
 
     @Override
-    public Optional<Double> extended$getOptionalDouble(String name) {
+    public OptionalDouble extended$getOptionalDouble(String name) {
         return this.contains(name, 99) ?
-                Try.of(() -> ((NumericTag) this.tags.get(name)).getAsDouble()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalDouble.of(((NumericTag) this.tags.get(name)).getAsDouble()))
+                        .getOrElse(OptionalDouble.empty()) :
+                OptionalDouble.empty();
     }
 
     @Override
-    public Optional<Double> extended$getStrictDouble(String name) {
+    public OptionalDouble extended$getStrictDouble(String name) {
         return this.contains(name, 6) ?
-                Try.of(() -> ((DoubleTag) this.tags.get(name)).getAsDouble()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalDouble.of(((DoubleTag) this.tags.get(name)).getAsDouble()))
+                        .getOrElse(OptionalDouble.empty()) :
+                OptionalDouble.empty();
     }
 
     @Override
