@@ -13,10 +13,6 @@ import java.util.Optional;
 
 @Mixin(CompoundTag.class)
 public abstract class MixinCompoundTag implements ExtendedCompoundTag {
-
-    @Shadow
-    public abstract boolean contains(String pKey, int pTagType);
-
     @Shadow
     @Final
     private Map<String, Tag> tags;
@@ -31,6 +27,9 @@ public abstract class MixinCompoundTag implements ExtendedCompoundTag {
 
     @Shadow
     public abstract byte getTagType(String pKey);
+
+    @Shadow
+    public abstract boolean contains(String pKey, int pTagType);
 
     @Override
     public Optional<Tag> extended$getOptionalTag(String name) {

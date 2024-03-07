@@ -143,8 +143,16 @@ jarJar.enable()
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    lib(jarJar("systems.manifold:manifold-ext-rt:${manifold_ext_rt_version}")) {
-        jarJar.ranged(it, "[${manifold_ext_rt_version},)")
+    lib(jarJar("systems.manifold:manifold-rt:${manifold_version}")) {
+        jarJar.ranged(it, "[${manifold_version},)")
+    }
+
+    lib(jarJar("systems.manifold:manifold-ext-rt:${manifold_version}")) {
+        jarJar.ranged(it, "[${manifold_version},)")
+    }
+
+    lib(jarJar("systems.manifold:manifold-util:${manifold_version}")) {
+        jarJar.ranged(it, "[${manifold_version},)")
     }
 
     lib(jarJar("committee.nova:Try:${try_version}")) {
@@ -152,7 +160,7 @@ dependencies {
     }
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    annotationProcessor "systems.manifold:manifold-ext:${manifold_ext_rt_version}"
+    annotationProcessor "systems.manifold:manifold-ext:${manifold_version}"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -221,11 +229,11 @@ tasks.jarJar.finalizedBy('reobfJarJar')
 // This is done because java expects modules to be in a single directory.
 // And if we have it in multiple we have to do performance intensive hacks like having the UnionFileSystem
 // This will eventually be migrated to ForgeGradle so modders don't need to manually do it. But that is later.
-sourceSets.each {
-    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
-    it.output.resourcesDir = dir
-    it.java.destinationDirectory = dir
-}
+//sourceSets.each {
+//    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
+//    it.output.resourcesDir = dir
+//    it.java.destinationDirectory = dir
+//}
 
 publishing {
     publications {
