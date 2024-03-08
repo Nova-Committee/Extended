@@ -1,6 +1,7 @@
 package committee.nova.extended.mixin;
 
 import committee.nova.extended.api.ExtendedCompoundTag;
+import committee.nova.pollutive.util.*;
 import committee.nova.util.Try;
 import net.minecraft.nbt.*;
 import org.spongepowered.asm.mixin.Final;
@@ -8,7 +9,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.Map;
+import java.util.Optional;
 
 @Mixin(CompoundTag.class)
 public abstract class MixinCompoundTag implements ExtendedCompoundTag {
@@ -36,31 +38,35 @@ public abstract class MixinCompoundTag implements ExtendedCompoundTag {
     }
 
     @Override
-    public Optional<Byte> extended$getOptionalByte(String name) {
+    public OptionalByte extended$getOptionalByte(String name) {
         return this.contains(name, 99) ?
-                Try.of(() -> ((NumericTag) this.tags.get(name)).getAsByte()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalByte.of(((NumericTag) this.tags.get(name)).getAsByte()))
+                        .getOrElse(OptionalByte.empty()) :
+                OptionalByte.empty();
     }
 
     @Override
-    public Optional<Byte> extended$getStrictByte(String name) {
+    public OptionalByte extended$getStrictByte(String name) {
         return this.contains(name, 1) ?
-                Try.of(() -> ((ByteTag) this.tags.get(name)).getAsByte()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalByte.of(((ByteTag) this.tags.get(name)).getAsByte()))
+                        .getOrElse(OptionalByte.empty()) :
+                OptionalByte.empty();
     }
 
     @Override
-    public Optional<Short> extended$getOptionalShort(String name) {
+    public OptionalShort extended$getOptionalShort(String name) {
         return this.contains(name, 99) ?
-                Try.of(() -> ((NumericTag) this.tags.get(name)).getAsShort()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalShort.of(((NumericTag) this.tags.get(name)).getAsShort()))
+                        .getOrElse(OptionalShort.empty()) :
+                OptionalShort.empty();
     }
 
     @Override
-    public Optional<Short> extended$getStrictShort(String name) {
+    public OptionalShort extended$getStrictShort(String name) {
         return this.contains(name, 2) ?
-                Try.of(() -> ((ShortTag) this.tags.get(name)).getAsShort()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalShort.of(((ShortTag) this.tags.get(name)).getAsShort()))
+                        .getOrElse(OptionalShort.empty()) :
+                OptionalShort.empty();
     }
 
     @Override
@@ -96,17 +102,19 @@ public abstract class MixinCompoundTag implements ExtendedCompoundTag {
     }
 
     @Override
-    public Optional<Float> extended$getOptionalFloat(String name) {
+    public OptionalFloat extended$getOptionalFloat(String name) {
         return this.contains(name, 99) ?
-                Try.of(() -> ((NumericTag) this.tags.get(name)).getAsFloat()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalFloat.of(((NumericTag) this.tags.get(name)).getAsFloat()))
+                        .getOrElse(OptionalFloat.empty()) :
+                OptionalFloat.empty();
     }
 
     @Override
-    public Optional<Float> extended$getStrictFloat(String name) {
+    public OptionalFloat extended$getStrictFloat(String name) {
         return this.contains(name, 5) ?
-                Try.of(() -> ((FloatTag) this.tags.get(name)).getAsFloat()).toOptional() :
-                Optional.empty();
+                Try.of(() -> OptionalFloat.of(((FloatTag) this.tags.get(name)).getAsFloat()))
+                        .getOrElse(OptionalFloat.empty()) :
+                OptionalFloat.empty();
     }
 
     @Override

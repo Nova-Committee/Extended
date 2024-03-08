@@ -1,13 +1,15 @@
 package committee.nova.extended.mixin;
 
 import committee.nova.extended.api.ExtendedListTag;
+import committee.nova.pollutive.util.*;
 import net.minecraft.nbt.*;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Mixin(ListTag.class)
 public abstract class MixinListTag implements ExtendedListTag {
@@ -57,39 +59,39 @@ public abstract class MixinListTag implements ExtendedListTag {
     }
 
     @Override
-    public Optional<Byte> extended$getOptionalByte(int index) {
+    public OptionalByte extended$getOptionalByte(int index) {
         if (index >= 0 && index < this.list.size()) {
             final Tag tag = this.list.get(index);
-            if (extended$isNumeric(tag.getId())) return Optional.of(((NumericTag) tag).getAsByte());
+            if (extended$isNumeric(tag.getId())) return OptionalByte.of(((NumericTag) tag).getAsByte());
         }
-        return Optional.empty();
+        return OptionalByte.empty();
     }
 
     @Override
-    public Optional<Byte> extended$getStrictByte(int index) {
+    public OptionalByte extended$getStrictByte(int index) {
         if (index >= 0 && index < this.list.size()) {
             final Tag tag = this.list.get(index);
-            if (tag.getId() == 1) return Optional.of(((ByteTag) tag).getAsByte());
+            if (tag.getId() == 1) return OptionalByte.of(((ByteTag) tag).getAsByte());
         }
-        return Optional.empty();
+        return OptionalByte.empty();
     }
 
     @Override
-    public Optional<Short> extended$getOptionalShort(int index) {
+    public OptionalShort extended$getOptionalShort(int index) {
         if (index >= 0 && index < this.list.size()) {
             final Tag tag = this.list.get(index);
-            if (extended$isNumeric(tag.getId())) return Optional.of(((NumericTag) tag).getAsShort());
+            if (extended$isNumeric(tag.getId())) return OptionalShort.of(((NumericTag) tag).getAsShort());
         }
-        return Optional.empty();
+        return OptionalShort.empty();
     }
 
     @Override
-    public Optional<Short> extended$getStrictShort(int index) {
+    public OptionalShort extended$getStrictShort(int index) {
         if (index >= 0 && index < this.list.size()) {
             Tag tag = this.list.get(index);
-            if (tag.getId() == 2) return Optional.of(((ShortTag) tag).getAsShort());
+            if (tag.getId() == 2) return OptionalShort.of(((ShortTag) tag).getAsShort());
         }
-        return Optional.empty();
+        return OptionalShort.empty();
     }
 
     @Override
@@ -174,21 +176,21 @@ public abstract class MixinListTag implements ExtendedListTag {
     }
 
     @Override
-    public Optional<Float> extended$getOptionalFloat(int index) {
+    public OptionalFloat extended$getOptionalFloat(int index) {
         if (index >= 0 && index < this.list.size()) {
             final Tag tag = this.list.get(index);
-            if (extended$isNumeric(tag.getId())) return Optional.of(((NumericTag) tag).getAsFloat());
+            if (extended$isNumeric(tag.getId())) return OptionalFloat.of(((NumericTag) tag).getAsFloat());
         }
-        return Optional.empty();
+        return OptionalFloat.empty();
     }
 
     @Override
-    public Optional<Float> extended$getStrictFloat(int index) {
+    public OptionalFloat extended$getStrictFloat(int index) {
         if (index >= 0 && index < this.list.size()) {
             final Tag tag = this.list.get(index);
-            if (tag.getId() == 5) return Optional.of(((FloatTag) tag).getAsFloat());
+            if (tag.getId() == 5) return OptionalFloat.of(((FloatTag) tag).getAsFloat());
         }
-        return Optional.empty();
+        return OptionalFloat.empty();
     }
 
     @Override

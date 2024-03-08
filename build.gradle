@@ -159,6 +159,10 @@ dependencies {
         jarJar.ranged(it, "[${try_version},)")
     }
 
+    lib(jarJar("committee.nova:pollutive:${pollutive_version}")) {
+        jarJar.ranged(it, "[${pollutive_version},)")
+    }
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     annotationProcessor "systems.manifold:manifold-ext:${manifold_version}"
 }

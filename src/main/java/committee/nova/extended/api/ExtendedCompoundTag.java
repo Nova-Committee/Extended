@@ -1,24 +1,22 @@
 package committee.nova.extended.api;
 
+import committee.nova.pollutive.util.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 
 import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
 
 public interface ExtendedCompoundTag {
     Optional<Tag> extended$getOptionalTag(String name);
 
-    Optional<Byte> extended$getOptionalByte(String name);
+    OptionalByte extended$getOptionalByte(String name);
 
-    Optional<Byte> extended$getStrictByte(String name);
+    OptionalByte extended$getStrictByte(String name);
 
-    Optional<Short> extended$getOptionalShort(String name);
+    OptionalShort extended$getOptionalShort(String name);
 
-    Optional<Short> extended$getStrictShort(String name);
+    OptionalShort extended$getStrictShort(String name);
 
     OptionalInt extended$getOptionalInt(String name);
 
@@ -28,9 +26,9 @@ public interface ExtendedCompoundTag {
 
     OptionalLong extended$getStrictLong(String name);
 
-    Optional<Float> extended$getOptionalFloat(String name);
+    OptionalFloat extended$getOptionalFloat(String name);
 
-    Optional<Float> extended$getStrictFloat(String name);
+    OptionalFloat extended$getStrictFloat(String name);
 
     OptionalDouble extended$getOptionalDouble(String name);
 
@@ -55,6 +53,6 @@ public interface ExtendedCompoundTag {
     ListTag extended$getOrForceCreateList(String name, int type);
 
     default Optional<Boolean> extended$getOptionalBoolean(String name) {
-        return extended$getOptionalByte(name).map(b -> b != 0);
+        return extended$getOptionalByte(name).boxed().map(b -> b != 0);
     }
 }

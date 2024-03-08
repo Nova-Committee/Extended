@@ -1,6 +1,7 @@
 package committee.nova.extended.extensions.net.minecraft.nbt.CompoundTag;
 
 import committee.nova.extended.api.ExtendedCompoundTag;
+import committee.nova.pollutive.util.*;
 import manifold.ext.rt.api.Extension;
 import manifold.ext.rt.api.This;
 import net.minecraft.nbt.CompoundTag;
@@ -8,9 +9,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 
 import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
 
 @SuppressWarnings("unused")
 @Extension
@@ -21,22 +19,22 @@ public class CompoundTagExtension {
     }
 
     @Extension
-    public static Optional<Byte> getOptionalByte(@This CompoundTag $this, String name) {
+    public static OptionalByte getOptionalByte(@This CompoundTag $this, String name) {
         return extended($this).extended$getOptionalByte(name);
     }
 
     @Extension
-    public static Optional<Byte> getStrictByte(@This CompoundTag $this, String name) {
+    public static OptionalByte getStrictByte(@This CompoundTag $this, String name) {
         return extended($this).extended$getStrictByte(name);
     }
 
     @Extension
-    public static Optional<Short> getOptionalShort(@This CompoundTag $this, String name) {
+    public static OptionalShort getOptionalShort(@This CompoundTag $this, String name) {
         return extended($this).extended$getOptionalShort(name);
     }
 
     @Extension
-    public static Optional<Short> getStrictShort(@This CompoundTag $this, String name) {
+    public static OptionalShort getStrictShort(@This CompoundTag $this, String name) {
         return extended($this).extended$getStrictShort(name);
     }
 
@@ -61,12 +59,12 @@ public class CompoundTagExtension {
     }
 
     @Extension
-    public static Optional<Float> getOptionalFloat(@This CompoundTag $this, String name) {
+    public static OptionalFloat getOptionalFloat(@This CompoundTag $this, String name) {
         return extended($this).extended$getOptionalFloat(name);
     }
 
     @Extension
-    public static Optional<Float> getStrictFloat(@This CompoundTag $this, String name) {
+    public static OptionalFloat getStrictFloat(@This CompoundTag $this, String name) {
         return extended($this).extended$getStrictFloat(name);
     }
 

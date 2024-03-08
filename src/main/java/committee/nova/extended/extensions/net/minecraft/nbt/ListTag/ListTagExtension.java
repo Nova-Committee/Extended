@@ -1,6 +1,7 @@
 package committee.nova.extended.extensions.net.minecraft.nbt.ListTag;
 
 import committee.nova.extended.api.ExtendedListTag;
+import committee.nova.pollutive.util.*;
 import manifold.ext.rt.api.Extension;
 import manifold.ext.rt.api.This;
 import net.minecraft.nbt.CompoundTag;
@@ -8,9 +9,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 
 import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
 
 @SuppressWarnings("unused")
 @Extension
@@ -26,22 +24,22 @@ public class ListTagExtension {
     }
 
     @Extension
-    public static Optional<Byte> getOptionalByte(@This ListTag $this, int index) {
+    public static OptionalByte getOptionalByte(@This ListTag $this, int index) {
         return extended($this).extended$getOptionalByte(index);
     }
 
     @Extension
-    public static Optional<Byte> getStrictByte(@This ListTag $this, int index) {
+    public static OptionalByte getStrictByte(@This ListTag $this, int index) {
         return extended($this).extended$getStrictByte(index);
     }
 
     @Extension
-    public static Optional<Short> getOptionalShort(@This ListTag $this, int index) {
+    public static OptionalShort getOptionalShort(@This ListTag $this, int index) {
         return extended($this).extended$getOptionalShort(index);
     }
 
     @Extension
-    public static Optional<Short> getStrictShort(@This ListTag $this, int index) {
+    public static OptionalShort getStrictShort(@This ListTag $this, int index) {
         return extended($this).extended$getStrictShort(index);
     }
 
@@ -71,12 +69,12 @@ public class ListTagExtension {
     }
 
     @Extension
-    public static Optional<Float> getOptionalFloat(@This ListTag $this, int index) {
+    public static OptionalFloat getOptionalFloat(@This ListTag $this, int index) {
         return extended($this).extended$getOptionalFloat(index);
     }
 
     @Extension
-    public static Optional<Float> getStrictFloat(@This ListTag $this, int index) {
+    public static OptionalFloat getStrictFloat(@This ListTag $this, int index) {
         return extended($this).extended$getStrictFloat(index);
     }
 
