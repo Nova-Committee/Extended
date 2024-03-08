@@ -6,6 +6,7 @@
   "refmap": "extended.refmap.json",
   "mixins": [
     "MixinCompoundTag",
+    "MixinItemStack",
     "MixinListTag"
   ],
   "client": [

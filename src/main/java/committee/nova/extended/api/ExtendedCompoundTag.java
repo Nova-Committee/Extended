@@ -53,6 +53,6 @@ public interface ExtendedCompoundTag {
     ListTag extended$getOrForceCreateList(String name, int type);
 
     default Optional<Boolean> extended$getOptionalBoolean(String name) {
-        return extended$getOptionalByte(name).boxed().map(b -> b != 0);
+        return extended$getOptionalByte(name).map(b -> b != 0);
     }
 }

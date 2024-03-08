@@ -61,6 +61,6 @@ public interface ExtendedListTag {
     }
 
     default Optional<Boolean> extended$getOptionalBoolean(int index) {
-        return extended$getOptionalByte(index).boxed().map(b -> b != 0);
+        return extended$getOptionalByte(index).map(b -> b != 0);
     }
 }
